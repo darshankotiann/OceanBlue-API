@@ -9,7 +9,7 @@ app.use(cors({
     origin: ["*", "http://localhost:3000"]
 }))
 app.use(bodyParser.json());
-const PORT = process.env.PORT;
+const PORT = 3000;
 
 mongoose.connect(process.env.MONGOOSE_URL, { useNewUrlParser: true })
     .then(() => { console.log("Database is Connected") })
