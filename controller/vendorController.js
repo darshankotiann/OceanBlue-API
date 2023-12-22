@@ -47,7 +47,7 @@ const handleSignin = async (req, res) => {
 
 const updateProfile = async (req, res) => {
     try {
-        const updatedProfile = await Vendor.findByIdAndUpdate(req.body._id, req.body, {
+        const updatedProfile = await Vendor.findByIdAndUpdate(req.vendor._id, req.body, {
             returnOriginal: false
         });
         if (!updatedProfile) {
