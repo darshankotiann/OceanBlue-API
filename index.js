@@ -16,8 +16,7 @@ mongoose.connect(process.env.MONGOOSE_URL, { useNewUrlParser: true })
     .catch((err) => { console.log("Database is not Connected ", err) })
 
 
-//Home Page
-app.get("/", (res) => res.send("Server is ON"))
+
 //Admin Router
 const adminRouter = require("./routes/adminRoutes")
 app.use("/admin", adminRouter)
