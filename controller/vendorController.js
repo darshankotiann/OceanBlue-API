@@ -74,7 +74,7 @@ const updateProfile = async (req, res) => {
 
 const getAllVendor = async (req, res) => {
     try {
-        const vendor = await Vendor.find();
+        const vendor = await Vendor.find({ password: 0 });
         if (!vendor) {
             res.status(500).json({
                 error: true, message: "Something Went Wrong", response: vendor,
@@ -95,7 +95,7 @@ const getAllVendor = async (req, res) => {
 const getVendor = async (req, res) => {
 
     try {
-        const vendor = await Vendor.findOne({ _id: req.vendor._id })
+        const vendor = await Vendor.findOne({ _id: req.vendor._id }, { password: 0 })
         if (!vendor) {
             res.status(500).json({
                 error: true,
