@@ -47,15 +47,15 @@ app.use("/bookservice", bookServiceRouter)
 
 //Emergency Service Router
 const emergencyServiceRouter = require('./routes/emergencyServiceRoutes');
-app.use("/bookservice", emergencyServiceRouter)
+app.use("/emergency", emergencyServiceRouter)
 
 //Scrap Request Router
 const scarpRequestRouter = require('./routes/scarpRequestRoutes');
-app.use("/bookservice", scarpRequestRouter)
+app.use("/scrap", scarpRequestRouter)
 
 //SPS Request Router
 const spsRequestRouter = require('./routes/spsRequestRoutes');
-app.use("/bookservice", spsRequestRouter)
+app.use("/sps", spsRequestRouter)
 
 app.listen(PORT, (error) => {
     if (!error) {
