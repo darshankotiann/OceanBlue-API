@@ -23,7 +23,7 @@ const getcategory = async (req, res) => {
 
 const addCategory = async (req, res) => {
     try {
-        const isPresent = await Category.findOne({ category_name: req.body.category_name })
+        const isPresent = await Category.findOne({ name: req.body.name })
         if (isPresent) {
             res.status(500).json({ error: true, message: "Category Already Exist" })
         } else {
@@ -48,9 +48,8 @@ const addCategory = async (req, res) => {
 }
 
 const editCategory = async (req, res) => {
-    console.log(req.body)
     try {
-        const updatedCategory = await Category.findByIdAndUpdate(req.body._id, { category_name: req.body.category_name }, {
+        const updatedCategory = await Category.findByIdAndUpdate(req.params._id, {...req.body }, {
             returnOriginal: false
         });
         if (!updatedCategory) {

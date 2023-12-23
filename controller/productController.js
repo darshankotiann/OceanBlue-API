@@ -5,7 +5,7 @@ const getProduct = async (req, res) => {
     try {
         const product = await Product.find().populate("category");
         if (!product) {
-            res.status(500).json({
+            res.status(401).json({
                 error: true, message: "Something Went Wrong", product: product,
             });
         } else {
@@ -24,9 +24,9 @@ const getProduct = async (req, res) => {
 const getSingleProduct = async (req, res) => {
     try {
 
-        const product = await Product.findOne({ _id: req.body._id })
+        const product = await Product.findOne({ _id: req.params._id }).populate("category")
         if (!product) {
-            res.status(500).json({
+            res.status(401).json({
                 error: true,
                 message: "Something Went Wrong",
                 product: product,
@@ -55,7 +55,7 @@ const addProduct = async (req, res) => {
         });
         const response = await product.save();
         if (!response) {
-            res.status(500).json({ error: true, message: "Something Went Wrong", response: response })
+            res.status(401).json({ error: true, message: "Something Went Wrong", response: response })
         } else {
             res.json({ error: false, message: "Product Added Successfully", response: response })
         }
@@ -67,11 +67,11 @@ const addProduct = async (req, res) => {
 
 const editProduct = async (req, res) => {
     try {
-        const updatedProduct = await Product.findByIdAndUpdate(req.body._id, req.body, {
+        const updatedProduct = await Product.findByIdAndUpdate(req.params._id, req.body, {
             returnOriginal: false
         });
         if (!updatedProduct) {
-            res.json({
+            res.status(401).json({
                 error: true,
                 message: "Something Went Wrong",
                 product: updatedProduct,

@@ -1,10 +1,21 @@
 const { Schema, default: mongoose } = require("mongoose");
 
 const CATEGORY_SCHEMA = new Schema({
-    category_name: {
+
+    name: {
         type: String,
         required: true,
-        unique: true,
+    },
+    image: {
+        type: String,
+        required: true,
+    },
+    brand: {
+        type: String,
+    },
+    timestamp: {
+        type: Number,
+        default: Date.now()
     }
 })
 

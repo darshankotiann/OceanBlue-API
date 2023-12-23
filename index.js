@@ -9,7 +9,7 @@ app.use(cors({
     origin: ["*", "http://localhost:3000"]
 }))
 app.use(bodyParser.json());
-const PORT = 3000;
+const PORT = 3001;
 
 mongoose.connect(process.env.MONGOOSE_URL, { useNewUrlParser: true })
     .then(() => { console.log("Database is Connected") })
@@ -33,6 +33,29 @@ app.use("/product", productRouter)
 const categoryRouter = require("./routes/categoryRoutes")
 app.use("/category", categoryRouter)
 
+//Product Enquiry 
+const ProductEnquiry = require("./routes/productEnquiryRoutes");
+app.use("/product-enquiry", ProductEnquiry)
+
+//Order Router
+const orderRouter = require("./routes/orderRoutes");
+app.use("/order", orderRouter)
+
+//Book A Service Router
+const bookServiceRouter = require('./routes/bookServiceRoutes');
+app.use("/bookservice", bookServiceRouter)
+
+//Emergency Service Router
+const emergencyServiceRouter = require('./routes/emergencyServiceRoutes');
+app.use("/bookservice", emergencyServiceRouter)
+
+//Scrap Request Router
+const scarpRequestRouter = require('./routes/scarpRequestRoutes');
+app.use("/bookservice", scarpRequestRouter)
+
+//SPS Request Router
+const spsRequestRouter = require('./routes/spsRequestRoutes');
+app.use("/bookservice", spsRequestRouter)
 
 app.listen(PORT, (error) => {
     if (!error) {

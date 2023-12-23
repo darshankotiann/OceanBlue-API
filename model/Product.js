@@ -1,30 +1,29 @@
 const { Schema, default: mongoose } = require("mongoose");
 
 const PRODUCT_SCHEMA = new Schema({
-    product_img: {
+    image: {
         type: String,
         required: true,
     },
-    product_name: {
+    name: {
         type: String,
         required: true
     },
-    product_description: {
+    description: {
         type: String,
         required: true
     },
-    inStock: {
-        type: Boolean,
-        required: true,
-        default: true
-    },
-    product_price: {
-        type: Number,
+    price: {
+        type: String,
         required: true,
     },
     category: {
         type: mongoose.SchemaTypes.ObjectId,
         ref: "CATEGORY"
+    },
+    timestamp: {
+        type: Number,
+        default: Date.now()
     }
 })
 

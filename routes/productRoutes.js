@@ -4,10 +4,10 @@ const adminAuth = require("../middleware/adminAuth")
 const { addProduct, editProduct, getProduct, getSingleProduct } = require("../controller/productController");
 
 
-router.get("/get", getProduct);
-router.post("/single-product", getSingleProduct)
+router.get("/", getProduct);
+router.get("/:_id", getSingleProduct)
 router.post("/add", adminAuth, addProduct);
-router.patch("/edit", adminAuth, editProduct);
+router.patch("/:_id", adminAuth, editProduct);
 
 
 

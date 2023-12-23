@@ -4,8 +4,8 @@ const adminAuth = require("../middleware/adminAuth")
 const { getcategory, addCategory, editCategory } = require("../controller/categoryController")
 
 
-router.get("/get", getcategory)
+router.get("/", getcategory)
 router.post("/add", adminAuth, addCategory);
-router.patch("/edit", adminAuth, editCategory)
+router.patch("/:_id", adminAuth, editCategory)
 
 module.exports = router

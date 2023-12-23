@@ -1,10 +1,10 @@
 const { default: mongoose, Schema } = require("mongoose");
 
 const VENDOR_SCHEMA = new Schema({
-    proflieImg: {
+    image: {
         type: String,
     },
-    name: {
+    fullname: {
         type: String,
         required: true
     },
@@ -18,7 +18,7 @@ const VENDOR_SCHEMA = new Schema({
         unique: true
     },
     phoneNo: {
-        type: Number,
+        type: String,
         unique: true
     },
     password: {
