@@ -22,7 +22,7 @@ const getProduct = async (req, res) => {
 
 const getProductByCategory = async (req, res) => {
     try {
-        const product = await Product.find({ category: req.params._id }).populate("category");
+        const product = await Product.find({ category: req.params._id });
         if (!product) {
             res.status(401).json({
                 error: true, message: "Something Went Wrong", product: product,
@@ -42,7 +42,7 @@ const getProductByCategory = async (req, res) => {
 const getSingleProduct = async (req, res) => {
     try {
 
-        const product = await Product.findOne({ _id: req.params._id }).populate("category")
+        const product = await Product.findOne({ _id: req.params._id })
         if (!product) {
             res.status(401).json({
                 error: true,
