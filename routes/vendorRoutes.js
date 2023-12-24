@@ -8,7 +8,7 @@ router.get("/get", adminAuth, getAllVendor);
 router.get("/get-profile", vendorAuth, getVendor)
 router.post("/signup", handleSignup);
 router.post("/signin", handleSignin);
-router.patch("/update", vendorAuth, updateProfile);
+router.patch("/update",adminAuth, vendorAuth, updateProfile);
 
 
 module.exports = router;
