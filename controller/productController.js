@@ -20,6 +20,24 @@ const getProduct = async (req, res) => {
     }
 }
 
+const getProductByCategory = async (req, res) => {
+    try {
+        const product = await Product.find({category:req.params._id}).populate("category");
+        if (!product) {
+            res.status(401).json({
+                error: true, message: "Something Went Wrong", product: product,
+            });
+        } else {
+            res.json({
+                error: false, message: "All Products are Fetched Successful!", product: product,
+            });
+        }
+    } catch (error) {
+        res.status(500).json({
+            error: true, message: "Something Went Wrong", product: error,
+        });
+    }
+}
 
 const getSingleProduct = async (req, res) => {
     try {
@@ -96,4 +114,4 @@ const editProduct = async (req, res) => {
 
 
 
-module.exports = { addProduct, editProduct, getProduct, getSingleProduct }
+module.exports = { addProduct, editProduct, getProduct, getSingleProduct ,getProductByCategory}

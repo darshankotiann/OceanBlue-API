@@ -4,10 +4,13 @@ const PRODUCT_SCHEMA = new Schema({
     image: {
         type: String,
         required: true,
+
     },
     name: {
         type: String,
-        required: true
+        required: true,
+        unique: true
+
     },
     description: {
         type: String,
