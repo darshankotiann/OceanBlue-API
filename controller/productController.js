@@ -22,7 +22,7 @@ const getProduct = async (req, res) => {
 
 const getProductByCategory = async (req, res) => {
     try {
-        const product = await Product.find({category:req.params._id}).populate("category");
+        const product = await Product.find({ category: req.params._id }).populate("category");
         if (!product) {
             res.status(401).json({
                 error: true, message: "Something Went Wrong", product: product,
@@ -110,8 +110,31 @@ const editProduct = async (req, res) => {
 }
 
 
+const deleteProduct = async (req, res) => {
+    try {
+        const response = await Product.findByIdAndDelete({ _id: req.params._id });
+        if (!response) {
+            res.status(500).json({
+                error: true,
+                message: "Something Went Wrong",
+                product: response,
+            });
+        } else {
+            res.json({
+                error: false,
+                message: "Product Deletd Successful!",
+                product: response,
+            });
+        }
+    } catch (error) {
+        res.status(500).json({
+            error: true,
+            message: "Something Went Wrong",
+            product: error,
+        });
+    }
+}
 
 
 
-
-module.exports = { addProduct, editProduct, getProduct, getSingleProduct ,getProductByCategory}
+module.exports = { addProduct, editProduct, getProduct, getSingleProduct, getProductByCategory, deleteProduct }

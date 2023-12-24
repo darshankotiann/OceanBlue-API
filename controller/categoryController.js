@@ -27,11 +27,14 @@ const addCategory = async (req, res) => {
         if (isPresent) {
             res.status(500).json({ error: true, message: "Category Already Exist" })
         } else {
+            console.log("else")
+
             const category = new Category(
-                { ...req.body }
+                req.body
             )
             const response = await category.save();
-            // const allCategory = await Category.find()
+            console.log(response)
+
             if (!response) {
                 res.status(500).json({ error: true, message: "Something Went Wrong", response: response })
             } else {
