@@ -31,4 +31,19 @@ const showOrders = async (req, res) => {
 
     }
 }
-module.exports = { assignOrders, showOrders }
+
+const getAllOrders = async (req, res) => {
+    try {
+        const response = await Orders.find().populate("productID").populate('vendorID');
+        if (!response) {
+            res.status(401).json({ error: true, message: "Something Went Wrong", response: response })
+        } else {
+            res.status(200).json({ error: false, message: "Order Assigned Successfully!", response: response })
+        }
+
+    } catch (error) {
+        res.status(500).json({ error: true, message: "Something Went Wrong", response: error })
+
+    }
+}
+module.exports = { assignOrders, showOrders, getAllOrders }
