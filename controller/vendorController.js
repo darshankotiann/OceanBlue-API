@@ -72,6 +72,33 @@ const updateProfile = async (req, res) => {
 
 }
 
+const updateProfileByAdmin = async (req, res) => {
+    try {
+        const updatedProfile = await Vendor.findByIdAndUpdate(req.params._id, req.body, {
+            returnOriginal: false
+        });
+        if (!updatedProfile) {
+            res.status(500).json({
+                error: true,
+                message: "Something Went Wrong",
+                response: updatedProfile,
+            });
+        } else {
+            res.json({
+                error: false,
+                message: "Profile Updated Successful!",
+                response: updatedProfile,
+            });
+        }
+    } catch (error) {
+        res.status(500).json({
+            error: true,
+            message: error.message,
+        });
+    }
+
+}
+
 const getAllVendor = async (req, res) => {
     try {
         const vendor = await Vendor.find({},{ password: 0 });
@@ -119,4 +146,4 @@ const getVendor = async (req, res) => {
 }
 
 
-module.exports = { handleSignin, handleSignup, updateProfile, getAllVendor, getVendor }
+module.exports = { handleSignin, handleSignup, updateProfile, getAllVendor, getVendor, updateProfileByAdmin }
