@@ -33,7 +33,7 @@ const VENDOR_SCHEMA = new Schema({
     isVerified: {
         type: Boolean,
         require: true,
-        default: false
+        default: true
     },
     time_stamp: {
         type: Number,

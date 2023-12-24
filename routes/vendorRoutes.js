@@ -1,9 +1,10 @@
 const express = require("express");
 const router = express.Router();
-const vendorAuth= require("../middleware/VendorAuth")
+const adminAuth = require("../middleware/adminAuth")
+const vendorAuth = require("../middleware/VendorAuth")
 const { handleSignup, handleSignin, updateProfile, getAllVendor, getVendor } = require("../controller/vendorController");
 
-router.get("/get", getAllVendor);
+router.get("/get", adminAuth, getAllVendor);
 router.get("/get-profile", vendorAuth, getVendor)
 router.post("/signup", handleSignup);
 router.post("/signin", handleSignin);
