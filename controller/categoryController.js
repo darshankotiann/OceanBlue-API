@@ -28,7 +28,7 @@ const addCategory = async (req, res) => {
             res.status(500).json({ error: true, message: "Category Already Exist" })
         } else {
             const category = new Category(
-                req.body
+                { ...req.body }
             )
             const response = await category.save();
             // const allCategory = await Category.find()
@@ -49,7 +49,7 @@ const addCategory = async (req, res) => {
 
 const editCategory = async (req, res) => {
     try {
-        const updatedCategory = await Category.findByIdAndUpdate(req.params._id, {...req.body }, {
+        const updatedCategory = await Category.findByIdAndUpdate(req.params._id, { ...req.body }, {
             returnOriginal: false
         });
         if (!updatedCategory) {
