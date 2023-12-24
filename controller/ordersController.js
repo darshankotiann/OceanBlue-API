@@ -19,7 +19,7 @@ const assignOrders = async (req, res) => {
 
 const showOrders = async (req, res) => {
     try {
-        const response = await Orders.find({ vendorID: req.vendor._id });
+        const response = await Orders.find({ vendorID: req.vendor._id }).populate("productID");
         if (!response) {
             res.status(401).json({ error: true, message: "Something Went Wrong", response: response })
         } else {
