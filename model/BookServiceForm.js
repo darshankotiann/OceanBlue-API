@@ -15,10 +15,10 @@ const BOOKSERVICE_SCHEMA = new Schema({
         type: Number,
         default: Date.now()
     },
-    status: {
-        type: String,
+    completed: {
+        type: Boolean,
         required: true,
-        default: "New"
+        default: false
     },
     message: {
         type: String,

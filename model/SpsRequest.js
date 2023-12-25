@@ -15,10 +15,10 @@ const SPS_SCHEMA = new Schema({
         type: Number,
         default: Date.now()
     },
-    status: {
-        type: String,
+    completed: {
+        type: Boolean,
         required: true,
-        default: "New"
-    }
+        default: false
+    },
 })
 module.exports = mongoose.model("SPSREQUEST", SPS_SCHEMA)

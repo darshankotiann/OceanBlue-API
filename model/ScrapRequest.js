@@ -20,10 +20,10 @@ const SCRAPREQUEST_SCHEMA = new Schema({
         type: Number,
         default: Date.now()
     },
-    status: {
-        type: String,
+    completed: {
+        type: Boolean,
         required: true,
-        default: "New"
-    }
+        default: false
+    },
 })
 module.exports = mongoose.model("SCRAP_REQUEST", SCRAPREQUEST_SCHEMA)
