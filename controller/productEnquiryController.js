@@ -16,7 +16,7 @@ const createProductEnquiry = async (req, res) => {
 
 const getProductEnquiry = async (req, res) => {
     try {
-        const response = await ProductEnquiry.find().populate("vendorID").populate("productID").populate("orderID").populate({ path: "orderID", populate: { path: "productID", model: "PRODUCTS" } });
+        const response = await ProductEnquiry.find().populate("vendorID").populate("productID").populate("orderID");
         if (!response) {
             res.status(401).json({ error: true, message: "Something Went Wrong", response: response })
         } else {
