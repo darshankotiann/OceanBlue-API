@@ -17,7 +17,7 @@ const createService = async (req, res) => {
 
 const getServiceData = async (req, res) => {
     try {
-        const response = await SpsRequest.find().populate("vendorID").populate("orderID").populate('productID');
+        const response = await SpsRequest.find().populate("vendorID");
         if (!response) {
             res.status(401).json({ error: true, message: "Something Went Wrong", response: response })
         } else {
