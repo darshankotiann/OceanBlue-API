@@ -34,7 +34,7 @@ const showOrders = async (req, res) => {
 
 const getAllOrders = async (req, res) => {
     try {
-        const response = await Orders.find().populate("productID").populate('vendorID');
+        const response = await Orders.find().populate("productID").populate('vendorID').populate({ path: "productID", populate: { path: "category", model: "CATEGORY" } });
         if (!response) {
             res.status(401).json({ error: true, message: "Something Went Wrong", response: response })
         } else {
