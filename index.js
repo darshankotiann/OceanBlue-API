@@ -6,7 +6,7 @@ const cors = require('cors')
 
 const app = express();
 app.use(cors({
-    origin: ["*", "http://localhost:3000"]
+    origin: ["*", "http://localhost:3000","https://ocean-blue-admin.vercel.app"]
 }))
 app.use(bodyParser.json());
 const PORT = 3001;
