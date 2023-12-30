@@ -1,4 +1,4 @@
-const Gallery=require("../model/Gallery");
+const Gallery = require("../model/Gallery");
 
 
 const createGallery = async (req, res) => {
@@ -29,4 +29,28 @@ const getGallery = async (req, res) => {
     }
 }
 
-module.exports={createGallery,getGallery}
+const deleteGallery = async (req, res) => {
+    try {
+        const response = await Gallery.findByIdAndDelete({ _id: req.params._id });
+        if (!response) {
+            res.status(500).json({
+                error: true,
+                message: "Something Went Wrong",
+                product: response,
+            });
+        } else {
+            res.json({
+                error: false,
+                message: "Gallery Deletd Successful!",
+                product: response,
+            });
+        }
+    } catch (error) {
+        res.status(500).json({
+            error: true,
+            message: "Something Went Wrong",
+            product: error,
+        });
+    }
+}
+module.exports = { createGallery, getGallery, deleteGallery }
