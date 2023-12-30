@@ -57,6 +57,10 @@ app.use("/scrap", scarpRequestRouter)
 const spsRequestRouter = require('./routes/spsRequestRoutes');
 app.use("/sps", spsRequestRouter)
 
+//Gallery Router
+const galleryRouter = require('./routes/galleryRoutes');
+app.use("/gallery", galleryRouter)
+
 app.listen(PORT, (error) => {
     if (!error) {
         console.log("Server is Live on " + PORT)
