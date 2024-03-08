@@ -101,7 +101,7 @@ const updateProfileByAdmin = async (req, res) => {
 
 const getAllVendor = async (req, res) => {
     try {
-        const vendor = await Vendor.find({},{ password: 0 });
+        const vendor = await Vendor.find();
         if (!vendor) {
             res.status(500).json({
                 error: true, message: "Something Went Wrong", response: vendor,
